@@ -1,0 +1,30 @@
+### weblogic 설치 메뉴얼 ###
+
+#설치 사용자 : oracle(다른걸로 사용 무방)
+
+#사용자 env 설정 (java경로)
+vi .bash_profile
+export JAVA_HOME=/home/oracle/weblogic/jdk1.8.0_202
+export PATH=$JAVA_HOME/bin:$PATH
+
+#설치 폴더
+/home/oracle/weblogic
+
+#설치 사용자 계정으로 변경
+ex)su - oracle
+
+#weblogic 설치
+java -jar ./fmw_14.1.1.0.0_wls_lite_generic.jar -silent -responseFile /home/oracle/weblogic/wls.rsp -invPtrLoc /home/oracle/weblogic/oraInst.loc
+
+#도메인 생성
+cd /home/oracle/weblogic/server/oracle_common/common/bin
+./wlst.sh /home/oracle/weblogic/domain.py
+​
+#서버 start, stop 스크립트 수정 (폴더명에 맞게)
+경로 : /home/oracle/weblogic/server/domains/base_domain
+startAdmin.sh
+stopAdmin.sh
+shutdown.py
+
+#boot.properties 생성
+경로 : /home/oracle/weblogic/server/domains/base_domain/boot.properties
