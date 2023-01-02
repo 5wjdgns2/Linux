@@ -1,0 +1,11 @@
+iptables -t nat -A PREROUTING -d 110.45.156.137 -p tcp --dport 10304 -j DNAT --to 10.123.4.53 -m "/bizmicro/dev/db/hybe-mysql1
+iptables -t nat -L --line-number
+
+
+사설에서 서비스 도메인으로 보낼때
+
+iptables -t nat -A PREROUTING -d 110.45.156.139 -p tcp --dport 80 -j DNAT --to 10.123.4.52:80
+iptables -t nat -A PREROUTING -d 110.45.156.139 -p tcp --dport 443 -j DNAT --to 10.123.4.52:443
+iptables -t nat -A PREROUTING -d 110.45.156.137 -p tcp --dport 80 -j DNAT --to 10.123.4.53:80
+iptables -t nat -A PREROUTING -d 110.45.156.137 -p tcp --dport 443 -j DNAT --to 10.123.4.53:443
+
